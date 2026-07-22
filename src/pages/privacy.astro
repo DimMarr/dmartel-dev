@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="Privacy Policy — Dimitri Martel"
+  description="Privacy policy for dmartel.dev: what data is collected and why."
+>
+  <Nav />
+  <main class="mx-auto max-w-3xl px-6 py-16">
+    <p class="mb-2 font-mono text-sm text-text-muted">
+      <span class="text-accent">&gt;</span> privacy
+    </p>
+    <h1 class="mb-8 text-2xl font-semibold sm:text-3xl">Privacy Policy</h1>
+
+    <div class="max-w-2xl space-y-6 text-text-muted">
+      <p>
+        Data controller: Dimitri Martel,
+        <a href="mailto:dimitri.martel@proton.me" class="text-accent hover:underline"
+          >dimitri.martel@proton.me</a
+        >.
+      </p>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Cookies</h2>
+        <p>This site does not set any cookies.</p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Analytics</h2>
+        <p>
+          This site may use <a
+            href="https://plausible.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:underline">Plausible Analytics</a
+          >, a cookie-free analytics tool. It does not use tracking identifiers or store
+          IP addresses, and only produces aggregated, anonymized statistics (page views,
+          referrer, country, device type). No consent banner is shown because no
+          personal data or cookies are involved.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Forms &amp; contact</h2>
+        <p>
+          This site has no contact form. The email and social links in the header and
+          footer open your own mail client or take you to LinkedIn/GitHub directly.
+          Nothing is submitted to or stored by this site.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">External links</h2>
+        <p>
+          Links to LinkedIn, GitHub, and the blog lead to services with their own
+          privacy policies, outside this site's control.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Your rights</h2>
+        <p>
+          Under the GDPR, you have the right to access, rectify, or erase any personal
+          data concerning you, and to object to or restrict its processing. To exercise
+          these rights, email
+          <a href="mailto:dimitri.martel@proton.me" class="text-accent hover:underline"
+            >dimitri.martel@proton.me</a
+          >. You can also lodge a complaint with the French data protection authority,
+          the <a
+            href="https://www.cnil.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:underline">CNIL</a
+          >.
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

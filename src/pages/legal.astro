@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Legal Notice — Dimitri Martel" description="Legal notice for dmartel.dev.">
+  <Nav />
+  <main class="mx-auto max-w-3xl px-6 py-16">
+    <p class="mb-2 font-mono text-sm text-text-muted">
+      <span class="text-accent">&gt;</span> legal
+    </p>
+    <h1 class="mb-8 text-2xl font-semibold sm:text-3xl">Legal Notice</h1>
+
+    <div class="max-w-2xl space-y-6 text-text-muted">
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Site publisher</h2>
+        <p>
+          This site is published by Dimitri Martel, an individual based in Montpellier,
+          France, in a personal, non-commercial capacity. Contact:
+          <a href="mailto:dimitri.martel@proton.me" class="text-accent hover:underline"
+            >dimitri.martel@proton.me</a
+          >.
+        </p>
+        <p class="mt-2">
+          Publication director: Dimitri Martel.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Hosting</h2>
+        <p>
+          This site is hosted by GitHub, Inc., 88 Colin P. Kelly Jr. Street, San
+          Francisco, CA 94107, USA (GitHub Pages,
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:underline">github.com</a
+          >).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Intellectual property</h2>
+        <p>
+          Unless otherwise stated, the text and code on this site are &copy;{" "}
+          {new Date().getFullYear()} Dimitri Martel. Reuse for personal or educational
+          purposes is fine; ask first for anything else.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-2 font-mono text-sm text-text">Data protection</h2>
+        <p>
+          See the <a href="/privacy" class="text-accent hover:underline">Privacy Policy</a>
+          for how this site handles data.
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

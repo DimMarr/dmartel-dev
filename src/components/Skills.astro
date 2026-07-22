@@ -1,0 +1,47 @@
+---
+const categories = [
+  {
+    title: "Containers & Orchestration",
+    tags: ["Docker", "Kubernetes", "Helm", "Docker Compose"],
+  },
+  {
+    title: "CI/CD & GitOps",
+    tags: ["GitHub Actions", "GitLab CI", "ArgoCD, Flux, Gitlab Agents"],
+  },
+  {
+    title: "Infra as Code & Networking",
+    tags: ["Terraform", "Ansible", "Traefik"],
+  },
+  {
+    title: "Observability & Security",
+    tags: ["Prometheus & Grafana", "OAuth2.1 / IAM (Keycloak)"],
+  },
+];
+---
+
+<section
+  id="skills"
+  class="reveal mx-auto max-w-4xl scroll-mt-24 border-t border-white/10 px-6 py-16"
+>
+  <p class="mb-2 font-mono text-sm text-text-muted">
+    <span class="text-accent">&gt;</span> skills
+  </p>
+  <h2 class="mb-8 text-2xl font-semibold sm:text-3xl">Skills</h2>
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    {
+      categories.map((cat) => (
+        <div class="rounded-lg border border-white/10 bg-surface p-6 transition-colors hover:border-accent">
+          <h3 class="mb-4 font-medium text-text">{cat.title}</h3>
+          <ul class="flex flex-wrap gap-2">
+            {cat.tags.map((tag) => (
+              <li class="rounded-md border border-white/10 bg-bg px-2.5 py-1 font-mono text-xs text-text-muted">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>

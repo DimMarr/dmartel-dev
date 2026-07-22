@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+
+const year = new Date().getFullYear();
+
+const links = [
+  {
+    href: "https://www.linkedin.com/in/dimitrimartel/",
+    label: "LinkedIn",
+    icon: "simple-icons:linkedin",
+  },
+  {
+    href: "https://github.com/DimMarr",
+    label: "GitHub",
+    icon: "simple-icons:github",
+  },
+  {
+    href: "mailto:dimitri.martel@proton.me",
+    label: "Email",
+    icon: "lucide:mail",
+  },
+  {
+    href: "https://blog.dmartel.dev",
+    label: "Blog",
+    icon: "lucide:arrow-up-right",
+  },
+];
+---
+
+<footer class="border-t border-white/10">
+  <div
+    class="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 py-10 text-sm text-text-muted sm:flex-row sm:justify-between"
+  >
+    <nav aria-label="Footer" class="flex flex-wrap items-center gap-x-5 gap-y-2">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+          >
+            <Icon name={link.icon} class="size-4" aria-hidden="true" />
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="flex flex-col items-center gap-2 sm:items-end">
+      <nav aria-label="Legal" class="flex items-center gap-4 text-xs">
+        <a href="/legal" class="hover:text-accent transition-colors">Legal Notice</a>
+        <a href="/privacy" class="hover:text-accent transition-colors">Privacy Policy</a>
+      </nav>
+      <p class="font-mono text-xs text-text-muted">
+        &copy; {year} Dimitri Martel
+      </p>
+    </div>
+  </div>
+</footer>

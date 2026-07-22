@@ -1,0 +1,114 @@
+---
+import { SEO } from "astro-seo";
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Dimitri Martel — DevOps Engineer",
+  description = "Portfolio of Dimitri Martel, a DevOps engineer working on Kubernetes, CI/CD, and LLM tooling. Based in Montpellier, France.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!--
+      Theme init: runs before first paint to avoid a flash of the wrong
+      theme. Dark is the default (no attribute needed); we only ever need
+      to stamp data-theme="light" onto <html>. Vanilla JS, no framework.
+    -->
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark");
+        if (theme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={Astro.url.href}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: "https://dmartel.dev/favicon.svg",
+          url: Astro.url.href,
+        },
+        optional: {
+          description: description,
+          siteName: "Dimitri Martel",
+        },
+      }}
+      twitter={{
+        card: "summary",
+      }}
+    />
+
+    <ClientRouter />
+
+    <!--
+      Plausible analytics (self-hosted or cloud). Gated behind an env var
+      so no fake/placeholder analytics endpoint gets baked into the build.
+      Set PUBLIC_PLAUSIBLE_DOMAIN in the deploy environment and point
+      src at your Plausible instance's script.js to enable.
+    -->
+    {
+      import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN && (
+        <script
+          defer
+          data-domain={import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN}
+          src="https://plausible.io/js/script.js"
+        />
+      )
+    }
+  </head>
+  <body class="min-h-screen bg-bg text-text font-sans antialiased">
+    <slot />
+
+    <!--
+      Reveal-on-scroll: adds .is-visible (defined in global.css) as
+      .reveal sections enter the viewport. Runs on astro:page-load so it
+      re-attaches after ClientRouter swaps. No animation library.
+    -->
+    <script>
+      function initReveal() {
+        const targets = document.querySelectorAll(".reveal:not(.is-visible)");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15 },
+        );
+        targets.forEach((el) => observer.observe(el));
+      }
+      document.addEventListener("astro:page-load", initReveal);
+    </script>
+  </body>
+</html>
